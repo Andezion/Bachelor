@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
+
+    <!-- Верхняя панель -->
+    <top>
+        <ToolBar style="-fx-background-color: #336699; -fx-padding: 5;">
+            <Button text="Сохранить в избранное" onAction="#onSaveFavorite"/>
+            <Button text="Открыть из избранного" onAction="#onLoadFavorite"/>
+            <Button text="Настройки" onAction="#onOpenSettings"/>
+            <Button text="Информация" onAction="#onOpenInfo"/>
+        </ToolBar>
+    </top>
+
+    <!-- Центральная область -->
+    <center>
+        <VBox spacing="10" padding="20">
+            <Label text="Введите координаты:" style="-fx-font-size: 16px;"/>
+            <HBox spacing="10">
+                <Label text="Широта:"/>
+                <TextField fx:id="latitudeField" promptText="Например, 55.75"/>
+                <Label text="Долгота:"/>
+                <TextField fx:id="longitudeField" promptText="Например, 37.61"/>
+            </HBox>
+            <Button text="Анализировать" onAction="#onAnalyze"/>
+            <TextArea fx:id="outputArea" prefHeight="150" wrapText="true"/>
+        </VBox>
+    </center>
+
+    <!-- Нижняя панель -->
+    <bottom>
+        <Label fx:id="statusLabel" text="Готово" style="-fx-padding: 10;" />
+    </bottom>
+
+</BorderPane>
