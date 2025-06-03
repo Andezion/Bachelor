@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.SettingsController"
+      padding="20">
+
+    <Label text="Настройки проекта" style="-fx-font-size: 16px;"/>
+
+    <HBox spacing="10">
+        <Label text="Стоимость рабочих:"/>
+        <TextField fx:id="workerCostField" promptText="в рублях"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Стоимость оборудования:"/>
+        <TextField fx:id="equipmentCostField" promptText="в рублях"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Срок окупаемости (лет):"/>
+        <TextField fx:id="paybackPeriodField" promptText="например, 5"/>
+    </HBox>
+
+    <Button text="Сохранить" onAction="#onSave"/>
+    <Label fx:id="statusLabel"/>
+</VBox>

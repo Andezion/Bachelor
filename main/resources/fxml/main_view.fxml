@@ -18,7 +18,11 @@
 
     <!-- Центральная область -->
     <center>
-        <VBox spacing="10" padding="20">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
             <Label text="Введите координаты:" style="-fx-font-size: 16px;"/>
             <HBox spacing="10">
                 <Label text="Широта:"/>
@@ -33,7 +37,7 @@
 
     <!-- Нижняя панель -->
     <bottom>
-        <Label fx:id="statusLabel" text="Готово" style="-fx-padding: 10;" />
+        <Label fx:id="statusLabel" text="Готово" style="-fx-padding: 10.0;" />
     </bottom>
 
 </BorderPane>
