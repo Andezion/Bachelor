@@ -1,9 +1,18 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import model.WeatherData;
+import service.WeatherApiService;
 
-public class MainController {
+import java.io.IOException;
+import java.util.List;
+
+public class MainController
+{
 
     @FXML
     private TextField latitudeField;
@@ -18,43 +27,50 @@ public class MainController {
     private Label statusLabel;
 
     @FXML
-    private void onAnalyze()
-    {
-        String latText = latitudeField.getText();
-        String lonText = longitudeField.getText();
-
+    private void onAnalyze() {
         try {
-            double lat = Double.parseDouble(latText);
-            double lon = Double.parseDouble(lonText);
+            double lat = Double.parseDouble(latitudeField.getText());
+            double lon = Double.parseDouble(longitudeField.getText());
 
-            statusLabel.setText("Запрос данных...");
-            // В будущем: вызов WeatherApiService и анализ
-            outputArea.setText("Заглушка: анализ координат (" + lat + ", " + lon + ")");
-            statusLabel.setText("Анализ завершён");
+            List<WeatherData> dataList = WeatherApiService.getHistoricalDataForYear(lat, lon);
 
+            String analysisResult = WeatherApiService.analyzeWeatherData(dataList);
+
+            outputArea.clear();
+            outputArea.appendText(analysisResult);
         } catch (NumberFormatException e) {
-            outputArea.setText("Ошибка: Введите корректные числовые значения широты и долготы.");
-            statusLabel.setText("Ошибка ввода");
+            outputArea.setText("Ошибка: введите корректные координаты.");
+        } catch (Exception e) {
+            outputArea.setText("Ошибка при анализе данных: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     @FXML
-    private void onSaveFavorite() {
+    private void onSaveFavorite()
+    {
+
         outputArea.setText("Функция 'Сохранить в избранное' ещё не реализована.");
     }
 
     @FXML
-    private void onLoadFavorite() {
+    private void onLoadFavorite()
+    {
+
         outputArea.setText("Функция 'Открыть из избранного' ещё не реализована.");
     }
 
     @FXML
-    private void onOpenSettings() {
-        outputArea.setText("Функция 'Настройки' ещё не реализована.");
+    private void onOpenSettings()
+    {
+
+        statusLabel.setText("Окно настроек ещё не подключено");
     }
 
     @FXML
-    private void onOpenInfo() {
+    private void onOpenInfo()
+    {
+
         outputArea.setText("Функция 'Информация' ещё не реализована.");
     }
 }
