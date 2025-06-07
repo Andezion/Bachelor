@@ -2,9 +2,9 @@ package model;
 
 public class ProjectSettings
 {
-    private final double workerCost;
-    private final double equipmentCost;
-    private final int desiredPaybackPeriodYears;
+    private double workerCost;
+    private double equipmentCost;
+    private int desiredPaybackPeriodYears;
 
     public ProjectSettings(double workerCost, double equipmentCost, int desiredPaybackPeriodYears)
     {
@@ -17,19 +17,27 @@ public class ProjectSettings
     {
         return workerCost;
     }
+    public void setWorkerCost(double workerCost)
+    {
+        this.workerCost = workerCost;
+    }
 
     public double getEquipmentCost()
     {
         return equipmentCost;
+    }
+    public void setEquipmentCost(double equipmentCost)
+    {
+        this.equipmentCost = equipmentCost;
     }
 
     public int getDesiredPaybackPeriodYears()
     {
         return desiredPaybackPeriodYears;
     }
-
-    public double getTotalInvestment()
+    public void setDesiredPaybackPeriodYears(int desiredPaybackPeriodYears)
     {
-        return workerCost + equipmentCost;
+        this.desiredPaybackPeriodYears = desiredPaybackPeriodYears;
     }
+
 }

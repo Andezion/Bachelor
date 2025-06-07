@@ -64,11 +64,11 @@ public class WeatherApiService {
                 if (wd != null) {
                     results.add(wd);
                 }
-                Thread.sleep(1100);
+                //Thread.sleep(1100);
             } catch (Exception e) {
                 System.err.println("Ошибка при запросе данных за дату " + date + ": " + e.getMessage());
             }
-            date = date.plusMonths(1);
+            date = date.plusDays(1);
         }
 
         return results;
@@ -100,7 +100,7 @@ public class WeatherApiService {
                         "Количество солнечных дней: %d\n" +
                         "Средняя скорость ветра: %.2f м/с\n" +
                         "Средняя температура: %.2f °C",
-                count, rainyDays * 365, sunnyDays * 365, avgWindSpeed, avgTemperature);
+                count, rainyDays, sunnyDays, avgWindSpeed, avgTemperature);
     }
 
 
@@ -155,7 +155,7 @@ public class WeatherApiService {
 
         // Солнечную радиацию временно ставим 0, т.к. в timemachine её нет
         double solarRadiation = 0.0;
-
-        return new WeatherData(windSpeed, windDirection, precipitation, solarRadiation, 0);
+        double temperature = dataPoint.optDouble("temp", 0.0);
+        return new WeatherData(windSpeed, windDirection, precipitation, solarRadiation, temperature);
     }
 }
