@@ -5,8 +5,11 @@
 <?import javafx.geometry.Insets?>
 
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.SettingsController"
-      padding="20">
+      fx:controller="controller.SettingsController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
     <Label text="Настройки проекта" style="-fx-font-size: 16px;"/>
 
