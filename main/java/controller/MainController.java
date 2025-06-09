@@ -3,6 +3,8 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,6 +33,15 @@ public class MainController
 
     @FXML
     private Label statusLabel;
+
+    @FXML
+    private LineChart<Number, Number> temperatureChart;
+
+    @FXML
+    private LineChart<Number, Number> windChart;
+
+    @FXML
+    private LineChart<Number, Number> solarChart;
 
     @FXML
     private void onAnalyze() {
@@ -62,6 +73,8 @@ public class MainController
             outputArea.appendText("Соответствует требованиям: " + (result_wind.isMeetsRequirements() ? "Да" : "Нет") + "\n");
             outputArea.appendText(String.format("Средняя скорость ветра: %.2f м/с\n", result_wind.getAverageWindSpeed()));
             outputArea.appendText("Примечание: " + result_wind.getNotes());
+
+            plotCharts(dataList);
         }
         catch (NumberFormatException e)
         {
@@ -72,6 +85,33 @@ public class MainController
             outputArea.setText("Ошибка при анализе данных: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private void plotCharts(List<WeatherData> dataList)
+    {
+        temperatureChart.getData().clear();
+        windChart.getData().clear();
+        solarChart.getData().clear();
+
+        XYChart.Series<Number, Number> tempSeries = new XYChart.Series<>();
+        tempSeries.setName("Температура (°C)");
+
+        XYChart.Series<Number, Number> windSeries = new XYChart.Series<>();
+        windSeries.setName("Скорость ветра (м/с)");
+
+        XYChart.Series<Number, Number> solarSeries = new XYChart.Series<>();
+        solarSeries.setName("Солнечная радиация (Вт/м²)");
+
+        for (int i = 0; i < dataList.size(); i++) {
+            WeatherData data = dataList.get(i);
+            tempSeries.getData().add(new XYChart.Data<>(i + 1, data.getTemperature()));
+            windSeries.getData().add(new XYChart.Data<>(i + 1, data.getWindSpeed()));
+            solarSeries.getData().add(new XYChart.Data<>(i + 1, data.getSolarRadiation()));
+        }
+
+        temperatureChart.getData().add(tempSeries);
+        windChart.getData().add(windSeries);
+        solarChart.getData().add(solarSeries);
     }
 
     @FXML

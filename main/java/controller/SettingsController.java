@@ -12,6 +12,11 @@ public class SettingsController {
     @FXML private TextField paybackPeriodField;
     @FXML private Label statusLabel;
 
+    @FXML private TextField solarEfficiencyField;
+    @FXML private TextField solarInstallationCostField;
+    @FXML private TextField electricityTariffField;
+    @FXML private TextField targetPaybackField;
+
     private final ProjectSettingsService settingsService = ProjectSettingsService.getInstance();
 
     @FXML
@@ -21,6 +26,11 @@ public class SettingsController {
             workerCostField.setText(String.valueOf(current.getWorkerCost()));
             equipmentCostField.setText(String.valueOf(current.getEquipmentCost()));
             paybackPeriodField.setText(String.valueOf(current.getDesiredPaybackPeriodYears()));
+
+            solarEfficiencyField.setText(String.valueOf(current.getSolarEfficiency() * 100)); // в %
+            solarInstallationCostField.setText(String.valueOf(current.getSolarInstallationCost()));
+            electricityTariffField.setText(String.valueOf(current.getElectricityTariff()));
+            targetPaybackField.setText(String.valueOf(current.getTargetPaybackMonths()));
         }
     }
 
@@ -31,7 +41,16 @@ public class SettingsController {
             double equipmentCost = Double.parseDouble(equipmentCostField.getText());
             int paybackYears = Integer.parseInt(paybackPeriodField.getText());
 
-            ProjectSettings settings = new ProjectSettings(workerCost, equipmentCost, paybackYears);
+            double solarEfficiency = Double.parseDouble(solarEfficiencyField.getText()) / 100.0;
+            double solarInstallationCost = Double.parseDouble(solarInstallationCostField.getText());
+            double electricityTariff = Double.parseDouble(electricityTariffField.getText());
+            double targetPaybackMonths = Double.parseDouble(targetPaybackField.getText());
+
+            ProjectSettings settings = new ProjectSettings(
+                    workerCost, equipmentCost, paybackYears,
+                    solarEfficiency, solarInstallationCost, electricityTariff, targetPaybackMonths
+            );
+            //ProjectSettings settings = new ProjectSettings(workerCost, equipmentCost, paybackYears);
             settingsService.setSettings(settings);
 
             statusLabel.setText("Настройки сохранены успешно!");

@@ -153,8 +153,9 @@ public class WeatherApiService {
             precipitation += dataPoint.getJSONObject("snow").optDouble("1h", 0.0);
         }
 
-        // Солнечную радиацию временно ставим 0, т.к. в timemachine её нет
-        double solarRadiation = 0.0;
+        double cloudiness = dataPoint.optDouble("clouds", 0.0); // в процентах
+        double solarRadiation = 1000 * (1 - cloudiness / 100.0);
+
         double temperature = dataPoint.optDouble("temp", 0.0);
         return new WeatherData(windSpeed, windDirection, precipitation, solarRadiation, temperature);
     }

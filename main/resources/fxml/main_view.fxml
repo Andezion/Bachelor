@@ -4,6 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.LineChart?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
 
     <!-- Верхняя панель -->
@@ -32,6 +34,41 @@
             </HBox>
             <Button text="Анализировать" onAction="#onAnalyze"/>
             <TextArea fx:id="outputArea" prefHeight="150" wrapText="true"/>
+
+            <TabPane tabClosingPolicy="UNAVAILABLE" prefHeight="300">
+                <tabs>
+                    <Tab text="Температура">
+                        <LineChart fx:id="temperatureChart" animated="false">
+                            <xAxis>
+                                <NumberAxis label="День"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Температура (°C)"/>
+                            </yAxis>
+                        </LineChart>
+                    </Tab>
+                    <Tab text="Скорость ветра">
+                        <LineChart fx:id="windChart" animated="false">
+                            <xAxis>
+                                <NumberAxis label="День"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Скорость (м/с)"/>
+                            </yAxis>
+                        </LineChart>
+                    </Tab>
+                    <Tab text="Солнечная радиация">
+                        <LineChart fx:id="solarChart" animated="false">
+                            <xAxis>
+                                <NumberAxis label="День"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Вт/м²"/>
+                            </yAxis>
+                        </LineChart>
+                    </Tab>
+                </tabs>
+            </TabPane>
         </VBox>
     </center>
 
