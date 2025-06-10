@@ -17,6 +17,9 @@ public class SettingsController {
     @FXML private TextField electricityTariffField;
     @FXML private TextField targetPaybackField;
 
+    @FXML private TextField tiltAngleField;
+    @FXML private TextField azimuthField;
+
     private final ProjectSettingsService settingsService = ProjectSettingsService.getInstance();
 
     @FXML
@@ -46,15 +49,20 @@ public class SettingsController {
             double electricityTariff = Double.parseDouble(electricityTariffField.getText());
             double targetPaybackMonths = Double.parseDouble(targetPaybackField.getText());
 
+            double tilt = Double.parseDouble(tiltAngleField.getText());
+            double azimuth = Double.parseDouble(azimuthField.getText());
+
             ProjectSettings settings = new ProjectSettings(
                     workerCost, equipmentCost, paybackYears,
-                    solarEfficiency, solarInstallationCost, electricityTariff, targetPaybackMonths
+                    solarEfficiency, solarInstallationCost, electricityTariff, targetPaybackMonths,
+                    tilt, azimuth
             );
-            //ProjectSettings settings = new ProjectSettings(workerCost, equipmentCost, paybackYears);
-            settingsService.setSettings(settings);
 
+            settingsService.setSettings(settings);
             statusLabel.setText("Настройки сохранены успешно!");
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             statusLabel.setText("Ошибка: проверьте правильность ввода.");
         }
     }

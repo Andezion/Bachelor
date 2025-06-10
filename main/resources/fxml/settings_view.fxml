@@ -34,6 +34,16 @@
     </HBox>
 
     <HBox spacing="10">
+        <Label text="Угол наклона панели (°):"/>
+        <TextField fx:id="tiltAngleField" promptText="например, 30"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Ориентация панели (азимут, °):"/>
+        <TextField fx:id="azimuthField" promptText="180 = юг"/>
+    </HBox>
+
+    <HBox spacing="10">
         <Label text="Стоимость установки (грн/кВт):"/>
         <TextField fx:id="solarInstallationCostField" promptText="например, 80000"/>
     </HBox>

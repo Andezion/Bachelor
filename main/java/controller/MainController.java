@@ -44,7 +44,8 @@ public class MainController
     private LineChart<Number, Number> solarChart;
 
     @FXML
-    private void onAnalyze() {
+    private void onAnalyze()
+    {
         try
         {
             double lat = Double.parseDouble(latitudeField.getText());
@@ -52,8 +53,7 @@ public class MainController
 
             List<WeatherData> dataList = WeatherApiService.getHistoricalDataForYear(lat, lon);
 
-            // Загружаем настройки проекта (из файла или как-то иначе — пока просто "заглушка")
-            ProjectSettings settings = ProjectSettings.load(); // Предположим, ты реализовал метод load()
+            ProjectSettings settings = ProjectSettings.load();
 
             WeatherAnalyzerService analyzer = new WeatherAnalyzerService();
             AnalysisResult result_solar = analyzer.analyzeSolarPowerPayback(dataList, settings);
@@ -102,7 +102,8 @@ public class MainController
         XYChart.Series<Number, Number> solarSeries = new XYChart.Series<>();
         solarSeries.setName("Солнечная радиация (Вт/м²)");
 
-        for (int i = 0; i < dataList.size(); i++) {
+        for (int i = 0; i < dataList.size(); i++)
+        {
             WeatherData data = dataList.get(i);
             tempSeries.getData().add(new XYChart.Data<>(i + 1, data.getTemperature()));
             windSeries.getData().add(new XYChart.Data<>(i + 1, data.getWindSpeed()));

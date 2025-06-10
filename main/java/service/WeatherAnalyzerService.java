@@ -89,7 +89,7 @@ public class WeatherAnalyzerService {
         boolean meets = estimatedPaybackMonths <= settings.getTargetPaybackMonths();
 
         String notes = String.format(
-                "Солнечных дней: %d, средняя температура: %.1f°C, генерация: %.1f кВт⋅ч, экономия: %.0f руб.",
+                "Солнечных дней: %d, средняя температура: %.1f°C, генерация: %.1f кВт⋅ч, экономия: %.0f грн.",
                 sunnyDays, avgTemp, realEnergyGenerated, savingsRub
         );
 

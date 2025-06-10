@@ -13,7 +13,10 @@ public class ProjectSettings
     private double solarEfficiency;            // от 0.0 до 1.0
     private double solarInstallationCost;
     private double electricityTariff;
-    private double targetPaybackMonths;        // в месяцах
+    private double targetPaybackMonths;
+
+    private double panelTiltAngle;      // в градусах
+    private double panelAzimuthAngle;
 
     private static final File FILE = new File("project_settings.json");
 
@@ -21,7 +24,9 @@ public class ProjectSettings
                            double solarEfficiency,
                            double solarInstallationCost,
                            double electricityTariff,
-                           double targetPaybackMonths)
+                           double targetPaybackMonths,
+                           double panelTiltAngle,
+                           double panelAzimuthAngle)
     {
         this.workerCost = workerCost;
         this.equipmentCost = equipmentCost;
@@ -31,6 +36,29 @@ public class ProjectSettings
         this.solarInstallationCost = solarInstallationCost;
         this.electricityTariff = electricityTariff;
         this.targetPaybackMonths = targetPaybackMonths;
+
+        this.panelTiltAngle = panelTiltAngle;
+        this.panelAzimuthAngle = panelAzimuthAngle;
+    }
+
+    public double getPanelTiltAngle()
+    {
+        return panelTiltAngle;
+    }
+
+    public void setPanelTiltAngle(double panelTiltAngle)
+    {
+        this.panelTiltAngle = panelTiltAngle;
+    }
+
+    public double getPanelAzimuthAngle()
+    {
+        return panelAzimuthAngle;
+    }
+
+    public void setPanelAzimuthAngle(double panelAzimuthAngle)
+    {
+        this.panelAzimuthAngle = panelAzimuthAngle;
     }
 
     public double getWorkerCost() {
@@ -93,10 +121,12 @@ public class ProjectSettings
         JsonUtil.writeToFile(FILE, this);
     }
 
-    public static ProjectSettings load() {
-        if (!FILE.exists()) {
+    public static ProjectSettings load()
+    {
+        if (!FILE.exists())
+        {
             // Возвращаем настройки по умолчанию, если файла нет
-            return new ProjectSettings(10000.0, 20000.0, 5, 0, 0, 0, 0);
+            return new ProjectSettings(10000.0, 20000.0, 5, 0, 0, 0, 0, 0, 0);
         }
         return (ProjectSettings) JsonUtil.readFromFile(FILE, ProjectSettings.class);
     }
