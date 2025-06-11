@@ -4,19 +4,26 @@ public class WeatherData
 {
     private double windSpeed;
     private double windDirection;
+
     private double precipitation;
+
     private double solarRadiation;
     private double temperature;
 
+    private double pressure;
+
     public WeatherData() {}
 
-    public WeatherData(double windSpeed, double windDirection, double precipitation, double solarRadiation, double temperature) {
+    public WeatherData(double windSpeed, double windDirection, double precipitation, double solarRadiation, double temperature, double pressure) {
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.precipitation = precipitation;
         this.solarRadiation = solarRadiation;
         this.temperature = temperature;
+        this.pressure = pressure;
     }
+
+    public double getPressure() { return pressure; }
 
     public double getWindSpeed() {
         return windSpeed;

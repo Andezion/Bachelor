@@ -20,6 +20,15 @@ public class JsonUtil {
         }
     }
 
+    public static <T> T readObjectFromFile(File file, Class<T> clazz) {
+        try {
+            return mapper.readValue(file, clazz);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static <T> T readFromFile(File file, TypeReference<T> typeReference) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(file, typeReference);

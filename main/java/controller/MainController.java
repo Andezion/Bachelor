@@ -176,7 +176,18 @@ public class MainController
     @FXML
     private void onOpenInfo()
     {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/info_view.fxml"));
+            Scene scene = new Scene(loader.load());
 
-        outputArea.setText("Функция 'Информация' ещё не реализована.");
+            Stage infoStage = new Stage();
+            infoStage.setTitle("Информация о проекте");
+            infoStage.setScene(scene);
+            infoStage.initModality(Modality.APPLICATION_MODAL);
+            infoStage.showAndWait();
+        } catch (IOException e) {
+            statusLabel.setText("Не удалось открыть окно информации.");
+            e.printStackTrace();
+        }
     }
 }

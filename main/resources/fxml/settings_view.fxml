@@ -58,6 +58,31 @@
         <TextField fx:id="targetPaybackField" promptText="например, 60"/>
     </HBox>
 
+    <HBox spacing="10">
+        <Label text="Стоимость турбины (₽):"/>
+        <TextField fx:id="windTurbineCost" promptText="например, 500000"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Радиус лопастей (м):"/>
+        <TextField fx:id="turbineRadius" promptText="например, 2.5"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="КПД турбины (0.35 – 0.5):"/>
+        <TextField fx:id="turbineEfficiency" promptText="например, 0.4"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Тариф ветроэнергии (₽/кВт⋅ч):"/>
+        <TextField fx:id="electricityTariff_wind" promptText="например, 6.5"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Площадь панели (м²):"/>
+        <TextField fx:id="panelAreaField" promptText="например, 25"/>
+    </HBox>
+
     <Button text="Сохранить" onAction="#onSave"/>
     <Label fx:id="statusLabel"/>
 </VBox>

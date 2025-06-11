@@ -20,6 +20,13 @@ public class SettingsController {
     @FXML private TextField tiltAngleField;
     @FXML private TextField azimuthField;
 
+    @FXML private TextField windTurbineCost;          // стоимость ветрогенератора
+    @FXML private TextField turbineRadius;            // радиус лопастей, м
+    @FXML private TextField turbineEfficiency;        // КПД (0.35–0.5)
+    @FXML private TextField electricityTariff_wind;
+
+    @FXML private TextField panelAreaField;
+
     private final ProjectSettingsService settingsService = ProjectSettingsService.getInstance();
 
     @FXML
@@ -32,8 +39,15 @@ public class SettingsController {
 
             solarEfficiencyField.setText(String.valueOf(current.getSolarEfficiency() * 100)); // в %
             solarInstallationCostField.setText(String.valueOf(current.getSolarInstallationCost()));
-            electricityTariffField.setText(String.valueOf(current.getElectricityTariff()));
+            electricityTariffField.setText(String.valueOf(current.getElectricityTariff_solar()));
             targetPaybackField.setText(String.valueOf(current.getTargetPaybackMonths()));
+
+            windTurbineCost.setText(String.valueOf(current.getWindTurbineCost()));
+            turbineRadius.setText(String.valueOf(current.getTurbineRadius()));
+            turbineEfficiency.setText(String.valueOf(current.getTurbineEfficiency()));
+            electricityTariff_wind.setText(String.valueOf(current.getElectricityTariff_wind()));
+
+            panelAreaField.setText(String.valueOf(current.getPanelArea()));
         }
     }
 
@@ -52,13 +66,29 @@ public class SettingsController {
             double tilt = Double.parseDouble(tiltAngleField.getText());
             double azimuth = Double.parseDouble(azimuthField.getText());
 
+            double windCost = Double.parseDouble(windTurbineCost.getText());
+            double radius = Double.parseDouble(turbineRadius.getText());
+            double efficiency = Double.parseDouble(turbineEfficiency.getText());
+            double tariffWind = Double.parseDouble(electricityTariff_wind.getText());
+
+            double panelArea = Double.parseDouble(panelAreaField.getText());
+
+
             ProjectSettings settings = new ProjectSettings(
                     workerCost, equipmentCost, paybackYears,
                     solarEfficiency, solarInstallationCost, electricityTariff, targetPaybackMonths,
                     tilt, azimuth
             );
 
+
+            settings.setWindTurbineCost(windCost);
+            settings.setTurbineRadius(radius);
+            settings.setTurbineEfficiency(efficiency);
+            settings.setElectricityTariff_wind(tariffWind);
+            settings.setPanelArea(panelArea);
+
             settingsService.setSettings(settings);
+            settings.save();
             statusLabel.setText("Настройки сохранены успешно!");
         }
         catch (NumberFormatException e)
