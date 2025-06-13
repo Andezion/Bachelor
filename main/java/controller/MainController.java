@@ -189,14 +189,14 @@ public class MainController
             Scene scene = new Scene(loader.load());
 
             Stage infoStage = new Stage();
-            infoStage.setTitle("Информация о проекте");
+            infoStage.setTitle("Project information");
             infoStage.setScene(scene);
             infoStage.initModality(Modality.APPLICATION_MODAL);
             infoStage.showAndWait();
         }
         catch (IOException e)
         {
-            statusLabel.setText("Не удалось открыть окно информации.");
+            statusLabel.setText("Failed to open information window!");
             e.printStackTrace();
         }
     }
