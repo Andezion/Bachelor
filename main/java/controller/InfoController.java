@@ -10,30 +10,30 @@ public class InfoController
     private TextArea infoArea;
 
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         ProjectSettings settings = ProjectSettings.load();
 
-        // Преобразуем азимут в описание
         String orientation = azimuthToText(settings.getPanelAzimuthAngle());
 
         String info = String.format("""
-            🔧 Текущие настройки проекта:
+            🔧 Current project settings:
 
-            💰 Финансовые параметры:
-            • Стоимость рабочих: %.2f грн.
-            • Стоимость оборудования: %.2f грн.
-            • Желаемый срок окупаемости: %d лет (%.0f месяцев)
+            💰 Financial parameters:
+            • Cost of workers: %.2f UAH.
+            • Cost of equipment: %.2f UAH.
+            • Desired payback period: %d years (%.0f months)
 
-            ☀️ Параметры солнечной установки:
-            • Эффективность панелей: %.2f %%
-            • Стоимость установки: %.0f грн/кВт
-            • Тариф на электроэнергию(солнце): %.2f грн/кВт⋅ч
-            • Тариф на электроэнергию(ветер): %.2f грн/кВт⋅ч
+            ☀️ Solar installation parameters:
+            • Panel efficiency: %.2f %%
+            • Installation cost: %.0f UAH/kW
+            • Electricity tariff (solar): %.2f UAH/kWh
+            • Electricity tariff (wind): %.2f UAH/kWh
 
-            📐 Расположение панелей:
-            • Ориентация: %s (%.1f°)
-            • Угол наклона: %.1f°
-            • Размер: %.1f м²
+            📐 Panel layout:
+            • Orientation: %s (%.1f°)
+            • Tilt angle: %.1f°
+            • Size: %.1f m²
             """,
                 settings.getWorkerCost(),
                 settings.getEquipmentCost(),
@@ -52,15 +52,16 @@ public class InfoController
         infoArea.setText(info);
     }
 
-    private String azimuthToText(double angle) {
-        if (angle >= 337.5 || angle < 22.5) return "север";
-        if (angle >= 22.5 && angle < 67.5) return "северо-восток";
-        if (angle >= 67.5 && angle < 112.5) return "восток";
-        if (angle >= 112.5 && angle < 157.5) return "юго-восток";
-        if (angle >= 157.5 && angle < 202.5) return "юг";
-        if (angle >= 202.5 && angle < 247.5) return "юго-запад";
-        if (angle >= 247.5 && angle < 292.5) return "запад";
-        if (angle >= 292.5 && angle < 337.5) return "северо-запад";
-        return "неизвестно";
+    private String azimuthToText(double angle)
+    {
+        if (angle >= 337.5 || angle < 22.5) return "north";
+        if (angle >= 22.5 && angle < 67.5) return "northeast";
+        if (angle >= 67.5 && angle < 112.5) return "east";
+        if (angle >= 112.5 && angle < 157.5) return "southeast";
+        if (angle >= 157.5 && angle < 202.5) return "south";
+        if (angle >= 202.5 && angle < 247.5) return "southwest";
+        if (angle >= 247.5 && angle < 292.5) return "west";
+        if (angle >= 292.5 && angle < 337.5) return "northwest";
+        return "unknown";
     }
 }
