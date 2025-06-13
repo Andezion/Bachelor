@@ -8,17 +8,12 @@ public class ProjectSettingsService
 
     private ProjectSettings currentSettings;
 
-    private ProjectSettingsService() {}
+    private ProjectSettingsService()
+    {
 
-    public static ProjectSettingsService getInstance() {
-        return INSTANCE;
     }
 
-    public ProjectSettings getSettings() {
-        return currentSettings;
-    }
-
-    public void setSettings(ProjectSettings settings) {
-        this.currentSettings = settings;
-    }
+    public static ProjectSettingsService getInstance() { return INSTANCE; }
+    public ProjectSettings getSettings() { return currentSettings;}
+    public void setSettings(ProjectSettings settings) { this.currentSettings = settings; }
 }

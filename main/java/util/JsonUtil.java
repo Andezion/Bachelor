@@ -9,42 +9,57 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonUtil {
+public class JsonUtil
+{
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public static <T> void writeToFile(File file, T data) {
-        try {
+    public static <T> void writeToFile(File file, T data)
+    {
+        try
+        {
             mapper.writerWithDefaultPrettyPrinter().writeValue(file, data);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    public static <T> T readObjectFromFile(File file, Class<T> clazz) {
-        try {
+    public static <T> T readObjectFromFile(File file, Class<T> clazz)
+    {
+        try
+        {
             return mapper.readValue(file, clazz);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
             return null;
         }
     }
 
-    public static <T> T readFromFile(File file, TypeReference<T> typeReference) throws IOException {
+    public static <T> T readFromFile(File file, TypeReference<T> typeReference) throws IOException
+    {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(file, typeReference);
     }
 
-    public static <T> List<T> readFromFile(File file, Class<T> clazz) {
+    public static <T> List<T> readFromFile(File file, Class<T> clazz)
+    {
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            if (!file.exists() || file.length() == 0) {
-                return new ArrayList<>(); // Файл не существует или пустой — вернуть пустой список
+        try
+        {
+            if (!file.exists() || file.length() == 0)
+            {
+                return new ArrayList<>();
             }
             JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
             return mapper.readValue(file, type);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
-            return new ArrayList<>(); // В случае ошибки тоже вернуть пустой список
+            return new ArrayList<>();
         }
     }
 }

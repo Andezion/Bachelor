@@ -12,9 +12,13 @@ public class WeatherData
 
     private double pressure;
 
-    public WeatherData() {}
+    public WeatherData()
+    {
 
-    public WeatherData(double windSpeed, double windDirection, double precipitation, double solarRadiation, double temperature, double pressure) {
+    }
+
+    public WeatherData(double windSpeed, double windDirection, double precipitation, double solarRadiation, double temperature, double pressure)
+    {
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.precipitation = precipitation;
@@ -24,30 +28,16 @@ public class WeatherData
     }
 
     public double getPressure() { return pressure; }
-
-    public double getWindSpeed() {
-        return windSpeed;
-    }
-
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public double getWindDirection() {
-        return windDirection;
-    }
-
-    public double getPrecipitation() {
-        return precipitation;
-    }
-
-    public double getSolarRadiation() {
-        return solarRadiation;
-    }
+    public double getWindSpeed() { return windSpeed; }
+    public double getTemperature() { return temperature; }
+    public double getWindDirection() { return windDirection; }
+    public double getPrecipitation() { return precipitation; }
+    public double getSolarRadiation() { return solarRadiation; }
 
     @Override
-    public String toString() {
-        return String.format("Ветер: %.2f м/с (%.1f°), Осадки: %.2f мм, Солнечная радиация: %.2f Вт/м²",
+    public String toString()
+    {
+        return String.format("Wind: %.2f m/s (%.1f°), Precipitation: %.2f mm, Solar radiation: %.2f W/m²",
                 windSpeed, windDirection, precipitation, solarRadiation);
     }
 }

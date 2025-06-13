@@ -43,7 +43,7 @@ public class WeatherApiService
 
             } catch (Exception e)
             {
-                System.err.println("Ошибка при запросе данных за дату " + date + ": " + e.getMessage());
+                System.err.println("Error while requesting data for date " + date + ": " + e.getMessage());
             }
             date = date.plusMonths(1);
         }
@@ -72,7 +72,7 @@ public class WeatherApiService
             }
             catch (Exception e)
             {
-                System.err.println("Ошибка при запросе данных за дату " + date + ": " + e.getMessage());
+                System.err.println("Error while requesting data for date " + date + ": " + e.getMessage());
             }
             date = date.plusDays(1);
         }
@@ -106,11 +106,11 @@ public class WeatherApiService
         double avgTemperature = count > 0 ? totalTemperature / count : 0.0;
 
         return String.format(
-                "Период: %d месяцев\n" +
-                        "Количество дождливых дней: %d\n" +
-                        "Количество солнечных дней: %d\n" +
-                        "Средняя скорость ветра: %.2f м/с\n" +
-                        "Средняя температура: %.2f °C",
+                "Period: %d months\n" +
+                        "Number of rainy days: %d\n" +
+                        "Number of sunny days: %d\n" +
+                        "Average wind speed: %.2f m/s\n" +
+                        "Average temperature: %.2f °C",
                 count, rainyDays, sunnyDays, avgWindSpeed, avgTemperature);
     }
 
@@ -126,7 +126,7 @@ public class WeatherApiService
         int responseCode = conn.getResponseCode();
         if (responseCode != 200)
         {
-            System.err.println("Ошибка API: HTTP " + responseCode + " для dt=" + dt);
+            System.err.println("Error API: HTTP " + responseCode + " for dt=" + dt);
             return null;
         }
 
@@ -143,14 +143,14 @@ public class WeatherApiService
 
         if (!json.has("data"))
         {
-            System.err.println("В ответе нет поля 'data' для dt=" + dt);
+            System.err.println("There is no 'data' field in the response for dt=" + dt);
             return null;
         }
 
         JSONArray dataArray = json.getJSONArray("data");
         if (dataArray.length() == 0)
         {
-            System.err.println("Пустой массив 'data' для dt=" + dt);
+            System.err.println("Empty array 'data' for dt=" + dt);
             return null;
         }
 
