@@ -1,7 +1,6 @@
 package repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import model.AnalysisResult;
 import model.Location;
 import util.JsonUtil;
 

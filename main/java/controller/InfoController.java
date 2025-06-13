@@ -34,19 +34,31 @@ public class InfoController
             • Orientation: %s (%.1f°)
             • Tilt angle: %.1f°
             • Size: %.1f m²
+            
+            💨 Wind turbine parameters:
+            • Turbine cost: %.0f UAH
+            • Turbine radius: %.1f m
+            • Turbine efficiency: %.1f %%
             """,
                 settings.getWorkerCost(),
                 settings.getEquipmentCost(),
                 settings.getDesiredPaybackPeriodYears(),
                 settings.getTargetPaybackMonths(),
+
                 settings.getSolarEfficiency() * 100,
                 settings.getSolarInstallationCost(),
                 settings.getElectricityTariff_solar(),
                 settings.getElectricityTariff_wind(),
+
                 orientation,
+
                 settings.getPanelAzimuthAngle(),
                 settings.getPanelTiltAngle(),
-                settings.getPanelArea()
+                settings.getPanelArea(),
+
+                settings.getWindTurbineCost(),
+                settings.getTurbineRadius(),
+                settings.getTurbineEfficiency() * 100
         );
 
         infoArea.setText(info);

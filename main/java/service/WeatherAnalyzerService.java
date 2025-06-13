@@ -48,21 +48,21 @@ public class WeatherAnalyzerService
         double panelArea = settings.getPanelArea();
         double realEnergyGenerated = totalKWhPerSquareMeter * efficiency * orientationEfficiencyFactor * panelArea;
 
-        double savingsRub = realEnergyGenerated * tariff;
+        double savings = realEnergyGenerated * tariff;
 
-        double estimatedPaybackMonths = (savingsRub == 0)
+        double estimatedPaybackMonths = (savings == 0)
                 ? Double.POSITIVE_INFINITY
-                : installationCost / savingsRub;
+                : installationCost / savings;
 
         boolean meets = estimatedPaybackMonths <= settings.getTargetPaybackMonths();
 
         String notes = String.format(
                 "Sunny days: %d, avg. temperature: %.1f°C, generation: %.1f kW⋅h, savings: %.0f UAH, orientation factor: %.2f",
-                sunnyDays, avgTemp, realEnergyGenerated, savingsRub, orientationEfficiencyFactor
+                sunnyDays, avgTemp, realEnergyGenerated, savings, orientationEfficiencyFactor
         );
 
         return new AnalysisResult(
-                estimatedPaybackMonths,
+                estimatedPaybackMonths / 12,
                 meets,
                 notes,
                 sunnyDays,
@@ -102,15 +102,16 @@ public class WeatherAnalyzerService
         double totalEnergyKWh = getTotalEnergyKWh(weatherDataList, area, efficiency);
 
         double totalCost = settings.getWorkerCost() + settings.getWindTurbineCost();
+
         double estimatedPaybackMonths = totalEnergyKWh == 0.0 ? Double.POSITIVE_INFINITY
-                : totalCost / (totalEnergyKWh * tariff / 12.0);
+                : totalCost / (totalEnergyKWh * tariff);
 
         boolean meets = estimatedPaybackMonths <= settings.getDesiredPaybackPeriodYears() * 12;
 
         String notes = String.format("Average wind speed: %.2f m/s, Energy production: %.0f kW⋅h", avgWind, totalEnergyKWh);
 
         return new AnalysisResult(
-                estimatedPaybackMonths,
+                estimatedPaybackMonths / 12,
                 meets,
                 notes,
                 sunnyDays,
