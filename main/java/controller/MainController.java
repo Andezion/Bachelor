@@ -160,21 +160,22 @@ public class MainController
     @FXML
     private void onOpenSettings()
     {
-        try {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/settings_view.fxml"));
             Scene scene = new Scene(loader.load());
 
             Stage settingsStage = new Stage();
-            settingsStage.setTitle("Настройки проекта");
+            settingsStage.setTitle("Project Settings");
             settingsStage.setScene(scene);
             settingsStage.initModality(Modality.APPLICATION_MODAL);
             settingsStage.showAndWait();
 
-            statusLabel.setText("Настройки обновлены");
+            statusLabel.setText("Settings updated");
         }
         catch (IOException e)
         {
-            statusLabel.setText("Не удалось открыть окно настроек.");
+            statusLabel.setText("Failed to open settings window!");
             e.printStackTrace();
         }
     }
@@ -182,7 +183,8 @@ public class MainController
     @FXML
     private void onOpenInfo()
     {
-        try {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/info_view.fxml"));
             Scene scene = new Scene(loader.load());
 
@@ -191,7 +193,9 @@ public class MainController
             infoStage.setScene(scene);
             infoStage.initModality(Modality.APPLICATION_MODAL);
             infoStage.showAndWait();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             statusLabel.setText("Не удалось открыть окно информации.");
             e.printStackTrace();
         }
