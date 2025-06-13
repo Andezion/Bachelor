@@ -11,10 +11,10 @@
     <!-- Верхняя панель -->
     <top>
         <ToolBar style="-fx-background-color: #336699; -fx-padding: 5;">
-            <Button text="Сохранить в избранное" onAction="#onSaveFavorite"/>
-            <Button text="Открыть из избранного" onAction="#onLoadFavorite"/>
-            <Button text="Настройки" onAction="#onOpenSettings"/>
-            <Button text="Информация" onAction="#onOpenInfo"/>
+            <Button text="Save to favorites" onAction="#onSaveFavorite"/>
+            <Button text="Open from Favorites" onAction="#onLoadFavorite"/>
+            <Button text="Settings" onAction="#onOpenSettings"/>
+            <Button text="Information" onAction="#onOpenInfo"/>
         </ToolBar>
     </top>
 
@@ -25,45 +25,45 @@
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <Label text="Введите координаты:" style="-fx-font-size: 16px;"/>
+            <Label text="Enter coordinates:" style="-fx-font-size: 16px;"/>
             <HBox spacing="10">
-                <Label text="Широта:"/>
-                <TextField fx:id="latitudeField" promptText="Например, 55.75"/>
-                <Label text="Долгота:"/>
-                <TextField fx:id="longitudeField" promptText="Например, 37.61"/>
+                <Label text="Latitude:"/>
+                <TextField fx:id="latitudeField" promptText="For example, 55.75"/>
+                <Label text="Longitude:"/>
+                <TextField fx:id="longitudeField" promptText="For example, 37.61"/>
             </HBox>
-            <Button text="Анализировать" onAction="#onAnalyze"/>
+            <Button text="Analyze" onAction="#onAnalyze"/>
             <TextArea fx:id="outputArea" prefHeight="150" wrapText="true"/>
 
             <TabPane tabClosingPolicy="UNAVAILABLE" prefHeight="300">
                 <tabs>
-                    <Tab text="Температура">
+                    <Tab text="Temperature">
                         <LineChart fx:id="temperatureChart" animated="false">
                             <xAxis>
-                                <NumberAxis label="День"/>
+                                <NumberAxis label="Day"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis label="Температура (°C)"/>
+                                <NumberAxis label="Temperature (°C)"/>
                             </yAxis>
                         </LineChart>
                     </Tab>
-                    <Tab text="Скорость ветра">
+                    <Tab text="Wind speed">
                         <LineChart fx:id="windChart" animated="false">
                             <xAxis>
-                                <NumberAxis label="День"/>
+                                <NumberAxis label="Day"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis label="Скорость (м/с)"/>
+                                <NumberAxis label="Speed (m/s)"/>
                             </yAxis>
                         </LineChart>
                     </Tab>
-                    <Tab text="Солнечная радиация">
+                    <Tab text="Solar radiation">
                         <LineChart fx:id="solarChart" animated="false">
                             <xAxis>
-                                <NumberAxis label="День"/>
+                                <NumberAxis label="Day"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis label="Вт/м²"/>
+                                <NumberAxis label="W/m²"/>
                             </yAxis>
                         </LineChart>
                     </Tab>
@@ -74,7 +74,7 @@
 
     <!-- Нижняя панель -->
     <bottom>
-        <Label fx:id="statusLabel" text="Готово" style="-fx-padding: 10.0;" />
+        <Label fx:id="statusLabel" text="Ready" style="-fx-padding: 10.0;" />
     </bottom>
 
 </BorderPane>

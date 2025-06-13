@@ -11,78 +11,78 @@
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <Label text="Настройки проекта" style="-fx-font-size: 16px;"/>
+    <Label text="Project Settings" style="-fx-font-size: 16px;"/>
 
     <HBox spacing="10">
-        <Label text="Стоимость рабочих:"/>
-        <TextField fx:id="workerCostField" promptText="в гривнах"/>
+        <Label text="Cost of workers:"/>
+        <TextField fx:id="workerCostField" promptText="in hryvnia"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Стоимость оборудования:"/>
-        <TextField fx:id="equipmentCostField" promptText="в гривнах"/>
+        <Label text="Cost of equipment :"/>
+        <TextField fx:id="equipmentCostField" promptText="in hryvnia"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Срок окупаемости (лет):"/>
-        <TextField fx:id="paybackPeriodField" promptText="например, 5"/>
+        <Label text="Payback period (years):"/>
+        <TextField fx:id="paybackPeriodField" promptText="for example, 5"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Эффективность панелей (%):"/>
-        <TextField fx:id="solarEfficiencyField" promptText="например, 18"/>
+        <Label text="Panel efficiency (%):"/>
+        <TextField fx:id="solarEfficiencyField" promptText="for example, 18"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Угол наклона панели (°):"/>
-        <TextField fx:id="tiltAngleField" promptText="например, 30"/>
+        <Label text="Panel tilt angle (°):"/>
+        <TextField fx:id="tiltAngleField" promptText="for example, 30"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Ориентация панели (азимут, °):"/>
-        <TextField fx:id="azimuthField" promptText="180 = юг"/>
+        <Label text="Panel orientation (azimuth, °):"/>
+        <TextField fx:id="azimuthField" promptText="180 = south"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Стоимость установки (грн/кВт):"/>
-        <TextField fx:id="solarInstallationCostField" promptText="например, 80000"/>
+        <Label text="Installation cost (UAH/kW):"/>
+        <TextField fx:id="solarInstallationCostField" promptText="for example, 80000"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Тариф на электроэнергию (грн/кВт·ч):"/>
-        <TextField fx:id="electricityTariffField" promptText="например, 5.5"/>
+        <Label text="Electricity tariff (UAH/kWh):"/>
+        <TextField fx:id="electricityTariffField" promptText="for example, 5.5"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Целевая окупаемость (мес):"/>
-        <TextField fx:id="targetPaybackField" promptText="например, 60"/>
+        <Label text="Target payback (months):"/>
+        <TextField fx:id="targetPaybackField" promptText="for example, 60"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Стоимость турбины (₽):"/>
-        <TextField fx:id="windTurbineCost" promptText="например, 500000"/>
+        <Label text="Cost of turbine (UAH):"/>
+        <TextField fx:id="windTurbineCost" promptText="for example, 500000"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Радиус лопастей (м):"/>
-        <TextField fx:id="turbineRadius" promptText="например, 2.5"/>
+        <Label text="Blade radius (m):"/>
+        <TextField fx:id="turbineRadius" promptText="for example, 2.5"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="КПД турбины (0.35 – 0.5):"/>
-        <TextField fx:id="turbineEfficiency" promptText="например, 0.4"/>
+        <Label text="Turbine efficiency (0.35 – 0.5):"/>
+        <TextField fx:id="turbineEfficiency" promptText="for example, 0.4"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Тариф ветроэнергии (₽/кВт⋅ч):"/>
-        <TextField fx:id="electricityTariff_wind" promptText="например, 6.5"/>
+        <Label text="Wind energy tariff (UAH/kWh):"/>
+        <TextField fx:id="electricityTariff_wind" promptText="for example, 6.5"/>
     </HBox>
 
     <HBox spacing="10">
-        <Label text="Площадь панели (м²):"/>
-        <TextField fx:id="panelAreaField" promptText="например, 25"/>
+        <Label text="Panel area (m²):"/>
+        <TextField fx:id="panelAreaField" promptText="for example, 25"/>
     </HBox>
 
-    <Button text="Сохранить" onAction="#onSave"/>
+    <Button text="Save" onAction="#onSave"/>
     <Label fx:id="statusLabel"/>
 </VBox>
