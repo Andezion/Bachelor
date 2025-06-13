@@ -1,6 +1,7 @@
 package model;
 
-public class AnalysisResult {
+public class AnalysisResult
+{
     private double paybackPeriodMonths;
     private boolean meetsRequirements;
     private String notes;
@@ -10,7 +11,6 @@ public class AnalysisResult {
     private double averageTemperature;
     private double averageWindSpeed;
 
-    // Конструктор на 7 аргументов
     public AnalysisResult(
             double paybackPeriodMonths,
             boolean meetsRequirements,
@@ -19,7 +19,8 @@ public class AnalysisResult {
             int rainyDays,
             double averageTemperature,
             double averageWindSpeed
-    ) {
+    )
+    {
         this.paybackPeriodMonths = paybackPeriodMonths;
         this.meetsRequirements = meetsRequirements;
         this.notes = notes;
@@ -29,61 +30,19 @@ public class AnalysisResult {
         this.averageWindSpeed = averageWindSpeed;
     }
 
-    // Геттеры
-    public double getPaybackPeriodMonths() {
-        return paybackPeriodMonths;
-    }
+    public double getPaybackPeriodMonths() { return paybackPeriodMonths; }
+    public boolean isMeetsRequirements() { return meetsRequirements; }
+    public String getNotes() { return notes; }
+    public int getSunnyDays() { return sunnyDays; }
+    public int getRainyDays() { return rainyDays; }
+    public double getAverageTemperature() { return averageTemperature; }
+    public double getAverageWindSpeed() { return averageWindSpeed; }
 
-    public boolean isMeetsRequirements() {
-        return meetsRequirements;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public int getSunnyDays() {
-        return sunnyDays;
-    }
-
-    public int getRainyDays() {
-        return rainyDays;
-    }
-
-    public double getAverageTemperature() {
-        return averageTemperature;
-    }
-
-    public double getAverageWindSpeed() {
-        return averageWindSpeed;
-    }
-
-    // Сеттеры (по желанию)
-    public void setPaybackPeriodMonths(double paybackPeriodMonths) {
-        this.paybackPeriodMonths = paybackPeriodMonths;
-    }
-
-    public void setMeetsRequirements(boolean meetsRequirements) {
-        this.meetsRequirements = meetsRequirements;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public void setSunnyDays(int sunnyDays) {
-        this.sunnyDays = sunnyDays;
-    }
-
-    public void setRainyDays(int rainyDays) {
-        this.rainyDays = rainyDays;
-    }
-
-    public void setAverageTemperature(double averageTemperature) {
-        this.averageTemperature = averageTemperature;
-    }
-
-    public void setAverageWindSpeed(double averageWindSpeed) {
-        this.averageWindSpeed = averageWindSpeed;
-    }
+    public void setPaybackPeriodMonths(double paybackPeriodMonths) { this.paybackPeriodMonths = paybackPeriodMonths; }
+    public void setMeetsRequirements(boolean meetsRequirements) { this.meetsRequirements = meetsRequirements; }
+    public void setNotes(String notes) { this.notes = notes; }
+    public void setSunnyDays(int sunnyDays) { this.sunnyDays = sunnyDays; }
+    public void setRainyDays(int rainyDays) { this.rainyDays = rainyDays; }
+    public void setAverageTemperature(double averageTemperature) { this.averageTemperature = averageTemperature; }
+    public void setAverageWindSpeed(double averageWindSpeed) { this.averageWindSpeed = averageWindSpeed; }
 }
