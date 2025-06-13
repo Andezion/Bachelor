@@ -60,29 +60,29 @@ public class MainController
             AnalysisResult result_wind = analyzer.analyzeWindPowerPayback(dataList, settings);
 
             outputArea.clear();
-            outputArea.appendText("Оценка окупаемости солнечной электростанции:\n");
-            outputArea.appendText(String.format("Окупаемость: %.1f мес.\n", result_solar.getPaybackPeriodMonths()));
-            outputArea.appendText("Соответствует требованиям: " + (result_solar.isMeetsRequirements() ? "Да" : "Нет") + "\n");
-            outputArea.appendText("Солнечных дней: " + result_solar.getSunnyDays() + "\n");
-            outputArea.appendText("Дождливых дней: " + result_solar.getRainyDays() + "\n");
-            outputArea.appendText(String.format("Средняя температура: %.2f°C\n", result_solar.getAverageTemperature()));
-            outputArea.appendText("Примечание: " + result_solar.getNotes() + "\n\n");
+            outputArea.appendText("Estimating the payback period of a solar power plant:\n");
+            outputArea.appendText(String.format("Payback: %.1f month.\n", result_solar.getPaybackPeriodMonths()));
+            outputArea.appendText("Meets requirements: " + (result_solar.isMeetsRequirements() ? "Yes" : "No") + "\n");
+            outputArea.appendText("Sunny days: " + result_solar.getSunnyDays() + "\n");
+            outputArea.appendText("Rainy days: " + result_solar.getRainyDays() + "\n");
+            outputArea.appendText(String.format("Average temperature: %.2f°C\n", result_solar.getAverageTemperature()));
+            outputArea.appendText("Note: " + result_solar.getNotes() + "\n\n");
 
-            outputArea.appendText("Оценка окупаемости ветровой электростанции:\n");
-            outputArea.appendText(String.format("Окупаемость: %.1f мес.\n", result_wind.getPaybackPeriodMonths()));
-            outputArea.appendText("Соответствует требованиям: " + (result_wind.isMeetsRequirements() ? "Да" : "Нет") + "\n");
-            outputArea.appendText(String.format("Средняя скорость ветра: %.2f м/с\n", result_wind.getAverageWindSpeed()));
-            outputArea.appendText("Примечание: " + result_wind.getNotes());
+            outputArea.appendText("Estimating the payback of a wind power plant:\n");
+            outputArea.appendText(String.format("Payback: %.1f month.\n", result_wind.getPaybackPeriodMonths()));
+            outputArea.appendText("Meets requirements: " + (result_wind.isMeetsRequirements() ? "Yes" : "No") + "\n");
+            outputArea.appendText(String.format("Average wind speed: %.2f m/s\n", result_wind.getAverageWindSpeed()));
+            outputArea.appendText("Note: " + result_wind.getNotes());
 
             plotCharts(dataList);
         }
         catch (NumberFormatException e)
         {
-            outputArea.setText("Ошибка: введите корректные координаты.");
+            outputArea.setText("Error: Please enter correct coordinates!");
         }
         catch (Exception e)
         {
-            outputArea.setText("Ошибка при анализе данных: " + e.getMessage());
+            outputArea.setText("Error in data analysis: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -94,13 +94,13 @@ public class MainController
         solarChart.getData().clear();
 
         XYChart.Series<Number, Number> tempSeries = new XYChart.Series<>();
-        tempSeries.setName("Температура (°C)");
+        tempSeries.setName("Temperature (°C)");
 
         XYChart.Series<Number, Number> windSeries = new XYChart.Series<>();
-        windSeries.setName("Скорость ветра (м/с)");
+        windSeries.setName("Wind speed (m/s)");
 
         XYChart.Series<Number, Number> solarSeries = new XYChart.Series<>();
-        solarSeries.setName("Солнечная радиация (Вт/м²)");
+        solarSeries.setName("Solar radiation (W/m²)");
 
         for (int i = 0; i < dataList.size(); i++)
         {
@@ -118,16 +118,19 @@ public class MainController
     @FXML
     private void onSaveFavorite()
     {
-        try {
+        try
+        {
             double lat = Double.parseDouble(latitudeField.getText());
             double lon = Double.parseDouble(longitudeField.getText());
 
             Location location = new Location(lat, lon);
             FavouriteRepository.save(location);
 
-            statusLabel.setText("Координаты сохранены в избранное.");
-        } catch (NumberFormatException e) {
-            statusLabel.setText("Ошибка: введите корректные координаты.");
+            statusLabel.setText("Coordinates saved to favorites!");
+        }
+        catch (NumberFormatException e)
+        {
+            statusLabel.setText("Error: Please enter correct coordinates!");
         }
     }
 
@@ -136,20 +139,21 @@ public class MainController
     {
         List<Location> favourites = FavouriteRepository.load();
 
-        if (favourites.isEmpty()) {
-            statusLabel.setText("Список избранного пуст.");
+        if (favourites.isEmpty())
+        {
+            statusLabel.setText("Your favorites list is empty!");
             return;
         }
 
         ChoiceDialog<Location> dialog = new ChoiceDialog<>(favourites.get(0), favourites);
-        dialog.setTitle("Выбор из избранного");
-        dialog.setHeaderText("Выберите координаты");
-        dialog.setContentText("Избранное:");
+        dialog.setTitle("Select from Favorites");
+        dialog.setHeaderText("Select coordinates");
+        dialog.setContentText("Featured:");
 
         dialog.showAndWait().ifPresent(selected -> {
             latitudeField.setText(String.valueOf(selected.getLatitude()));
             longitudeField.setText(String.valueOf(selected.getLongitude()));
-            statusLabel.setText("Загружены координаты из избранного.");
+            statusLabel.setText("Coordinates from favorites loaded!");
         });
     }
 
@@ -163,11 +167,13 @@ public class MainController
             Stage settingsStage = new Stage();
             settingsStage.setTitle("Настройки проекта");
             settingsStage.setScene(scene);
-            settingsStage.initModality(Modality.APPLICATION_MODAL); // блокирует основное окно
-            settingsStage.showAndWait(); // ждёт закрытия окна
+            settingsStage.initModality(Modality.APPLICATION_MODAL);
+            settingsStage.showAndWait();
 
             statusLabel.setText("Настройки обновлены");
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             statusLabel.setText("Не удалось открыть окно настроек.");
             e.printStackTrace();
         }
