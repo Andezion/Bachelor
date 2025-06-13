@@ -5,7 +5,8 @@ import service.ProjectSettingsService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class SettingsController {
+public class SettingsController
+{
 
     @FXML private TextField workerCostField;
     @FXML private TextField equipmentCostField;
@@ -20,9 +21,9 @@ public class SettingsController {
     @FXML private TextField tiltAngleField;
     @FXML private TextField azimuthField;
 
-    @FXML private TextField windTurbineCost;          // стоимость ветрогенератора
-    @FXML private TextField turbineRadius;            // радиус лопастей, м
-    @FXML private TextField turbineEfficiency;        // КПД (0.35–0.5)
+    @FXML private TextField windTurbineCost;
+    @FXML private TextField turbineRadius;
+    @FXML private TextField turbineEfficiency;
     @FXML private TextField electricityTariff_wind;
 
     @FXML private TextField panelAreaField;
@@ -30,14 +31,16 @@ public class SettingsController {
     private final ProjectSettingsService settingsService = ProjectSettingsService.getInstance();
 
     @FXML
-    private void initialize() {
+    private void initialize()
+    {
         ProjectSettings current = settingsService.getSettings();
-        if (current != null) {
+        if (current != null)
+        {
             workerCostField.setText(String.valueOf(current.getWorkerCost()));
             equipmentCostField.setText(String.valueOf(current.getEquipmentCost()));
             paybackPeriodField.setText(String.valueOf(current.getDesiredPaybackPeriodYears()));
 
-            solarEfficiencyField.setText(String.valueOf(current.getSolarEfficiency() * 100)); // в %
+            solarEfficiencyField.setText(String.valueOf(current.getSolarEfficiency() * 100));
             solarInstallationCostField.setText(String.valueOf(current.getSolarInstallationCost()));
             electricityTariffField.setText(String.valueOf(current.getElectricityTariff_solar()));
             targetPaybackField.setText(String.valueOf(current.getTargetPaybackMonths()));
@@ -52,8 +55,10 @@ public class SettingsController {
     }
 
     @FXML
-    private void onSave() {
-        try {
+    private void onSave()
+    {
+        try
+        {
             double workerCost = Double.parseDouble(workerCostField.getText());
             double equipmentCost = Double.parseDouble(equipmentCostField.getText());
             int paybackYears = Integer.parseInt(paybackPeriodField.getText());
@@ -89,11 +94,11 @@ public class SettingsController {
 
             settingsService.setSettings(settings);
             settings.save();
-            statusLabel.setText("Настройки сохранены успешно!");
+            statusLabel.setText("Settings saved successfully!");
         }
         catch (NumberFormatException e)
         {
-            statusLabel.setText("Ошибка: проверьте правильность ввода.");
+            statusLabel.setText("Error: Please check your input!");
         }
     }
 }
