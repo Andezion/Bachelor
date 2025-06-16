@@ -28,9 +28,9 @@
             <Label text="Enter coordinates:" style="-fx-font-size: 16px;"/>
             <HBox spacing="10">
                 <Label text="Latitude:"/>
-                <TextField fx:id="latitudeField" promptText="For example, 55.75"/>
+                <TextField fx:id="latitudeField" promptText="For example, 50"/>
                 <Label text="Longitude:"/>
-                <TextField fx:id="longitudeField" promptText="For example, 37.61"/>
+                <TextField fx:id="longitudeField" promptText="For example, 30"/>
             </HBox>
             <Button text="Analyze" onAction="#onAnalyze"/>
             <TextArea fx:id="outputArea" prefHeight="150" wrapText="true"/>
