@@ -1,7 +1,7 @@
 # Currency Analysis Tool (MIVR)
 
-![GitHub last commit](https://img.shields.io/github/last-commit/Andezion/ZPI2024_IO_MIVR)
-![GitHub issues](https://img.shields.io/github/issues/Andezion/ZPI2024_IO_MIVR)
+![GitHub last commit](https://img.shields.io/github/last-commit/IIS-ZPI/ZPI2024_IO_MIVR)
+![GitHub issues](https://img.shields.io/github/issues/IIS-ZPI/ZPI2024_IO_MIVR)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Introduction
@@ -35,7 +35,7 @@ The system involves a User interacting with a Backend System, which communicates
 * Stable Internet Connection (for NBP API data).
 
 ### Installation & Running
-1.  **Clone the repository:** `git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git`
+1.  **Clone the repository:** `git clone https://github.com/IIS-ZPI/ZPI2024_IO_MIVR`
 2.  **Navigate:** `cd YOUR_REPOSITORY`
 3.  **Build (Maven example):** `mvn clean install`
 4.  **Run:** `java -jar target/CurrencyAnalysisTool.jar`
@@ -43,10 +43,10 @@ The system involves a User interacting with a Backend System, which communicates
 ## Project Timeline
 
 The project followed a three-sprint agile approach:
-* **Sprint 1 (Apr 1 - Apr 10, 2025):** Implementation and testing of "Perform Statistical Analysis" functionality.
-* **Sprint 2 (Apr 10 - Apr 16, 2025):** Implementation and testing of "Analyze Sessions" functionality.
-* **Sprint 3 (Apr 16 - Apr 28, 2025):** Implementation and testing of "View Exchange Rate Trends" functionality.
-* **System Release (Apr 28 - Apr 30, 2025):** Final deployment.
+* **Sprint 1 (Apr 1 - Apr 16, 2025):** Implementation and testing of "Perform Statistical Analysis" functionality.
+* **Sprint 2 (Apr 16 - May 16, 2025):** Implementation and testing of "Analyze Sessions" functionality.
+* **Sprint 3 (May 16 - June 28, 2025):** Implementation and testing of "View Exchange Rate Trends" functionality.
+* **System Release (June 28 - June 30, 2025):** Final deployment.
 
 ## Intended Audience
 
@@ -62,5 +62,5 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-[Your Name/Team Name]
-[Your Email Address]
+[Team Name]
+[Email Address]
