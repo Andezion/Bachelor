@@ -36,7 +36,7 @@ The system involves a User interacting with a Backend System, which communicates
 
 ### Installation & Running
 1.  **Clone the repository:** `git clone https://github.com/IIS-ZPI/ZPI2024_IO_MIVR`
-2.  **Navigate:** `cd YOUR_REPOSITORY`
+2.  **Navigate:** `cd ZPI2024_IO_MIVR`
 3.  **Build (Maven example):** `mvn clean install`
 4.  **Run:** `java -jar target/CurrencyAnalysisTool.jar`
 
